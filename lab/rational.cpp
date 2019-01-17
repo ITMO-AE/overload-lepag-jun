@@ -55,12 +55,13 @@ Rational operator *(const Rational& a, const Rational& b)
 
 Rational operator /(const Rational& a, const Rational& b)
 {
+    assert(a.Denominator() * b.Numerator() != 0);
     return Rational((a.Numerator() * b.Denominator()), (a.Denominator() * b.Numerator()));
 }
 
 ostream& operator <<(ostream& out, const Rational& r)
 {
-    return out << r.numerator << "/" << r.denominator;
+    return out << r.Numerator() << "/" << r.Denominator();
 }
 
 istream& operator >>(istream& in, Rational& r)
